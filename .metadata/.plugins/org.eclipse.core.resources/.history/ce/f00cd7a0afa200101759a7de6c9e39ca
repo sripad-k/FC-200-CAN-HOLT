@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="ASCII"?>
+<sdkproject:SdkProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdkproject="http://www.xilinx.com/sdkproject" name="can_holt" location="C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt" platform="C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/136T-2200-113050-001-F11-02.xpfm" platformUID="xilinx:::0.0(custom)" systemProject="can_holt_system" sysConfig="136T-2200-113050-001-F11-02" runtime="C/C++" cpu="standalone_domain" cpuInstance="psu_cortexr5_0" os="standalone" mssSignature="609d51dbfae8b6b187e55cac0323f5bb">
+  <configuration name="Debug" id="xilinx.gnu.arm.r5.exe.debug.1596578827" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+    <lastBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <configuration name="Release" id="xilinx.gnu.arm.r5.exe.release.1262751619" dirty="true">
+    <configBuildOptions xsi:type="sdkproject:SdkOptions"/>
+  </configuration>
+  <template appTemplateName="empty_application"/>
+</sdkproject:SdkProject>

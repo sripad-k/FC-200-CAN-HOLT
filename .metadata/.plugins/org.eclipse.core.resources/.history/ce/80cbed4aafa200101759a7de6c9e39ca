@@ -238,10 +238,10 @@ static void CAN_ReadMsg(void)
 					msgCounter++;
 					//          GLOBAL_SerialPrint("   CAN Rx OK: (Msg counter: %d), (IF:%f)\n\r",msgCounter,canIndex);
 					GLOBAL_SerialPrint("  CAN ID = %x\r\n", can_rx_id, 0.0f);
-//					for (Uint8_t i = 0; i < inMsg.dataLength; i++)
-//					{
-//						GLOBAL_SerialPrint("   Data: %x Byte: %f\n\r", inMsg.data[i], i);
-//					}
+					for (Uint8_t i = 0; i < inMsg.dataLength; i++)
+					{
+						GLOBAL_SerialPrint("   Data: %x Byte: %f\n\r", inMsg.data[i], i);
+					}
 				}
 				else if (receiveSuccess == d_STATUS_NO_DATA)
 				{
@@ -278,10 +278,10 @@ static void CAN_ReadHoltMsg(void)
 					msgCounter++;
 					//          GLOBAL_SerialPrint("   CAN Rx OK: (Msg counter: %d), (IF:%f)\n\r",msgCounter,canIndex);
 					GLOBAL_SerialPrint("  CAN ID = %x\r\n", can_rx_id, 0.0f);
-//					for (Uint8_t i = 0; i < inMsg.dataLength; i++)
-//					{
-//						GLOBAL_SerialPrint("   Data: %x Byte: %f\n\r", inMsg.data[i], i);
-//					}
+					for (Uint8_t i = 0; i < inMsg.dataLength; i++)
+					{
+						GLOBAL_SerialPrint("   Data: %x Byte: %f\n\r", inMsg.data[i], i);
+					}
 				}
 				else if (receiveSuccess == d_STATUS_NO_DATA)
 				{

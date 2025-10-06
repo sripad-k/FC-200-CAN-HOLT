@@ -1,8 +1,8 @@
-16:20:49 **** Clean-only build of configuration Debug for project can_holt_system ****
+16:31:09 **** Clean-only build of configuration Debug for project can_holt_system ****
 make clean 
 rm -rf ./_sds
 rm -rf package
 rm -f system.bif
 
-16:20:49 Build Finished (took 148ms)
+16:31:09 Build Finished (took 153ms)
 
