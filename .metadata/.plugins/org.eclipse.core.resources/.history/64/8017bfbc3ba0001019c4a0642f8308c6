@@ -1,0 +1,144 @@
+#include "soc/defines/d_common_types.h"
+#include "soc/uart/d_uart.h"
+#include "soc/timer/d_timer.h"
+#include "soc/defines/d_common_status.h"
+#include "soc/can/d_can_cfg.h"
+#include "soc/can/d_can.h"
+#include "sru/can_holt/d_can_holt.h"                  /* Discrete driver */
+#include "sru/can_holt/d_can_holt_cfg.h"              /* Discrete driver config */
+#include "kernel/general/d_gen_string.h"
+#include "soc/discrete/d_discrete.h"
+#include "ETAS_global.h"
+
+static const Uint32_t UART_CHANNEL = 0U;
+static const Uint32_t UART_BAUD = 115200U;
+
+const static Uint32_t BIT_SET   = 0x00000001u;      /* 32 bit unsigned integer with LS bit set to 1 */
+Bool_t CANInitialised[d_CAN_MAX_INTERFACES];
+Bool_t CANHOLTInitialised[d_CAN_HOLT_MAX_INTERFACES];
+
+d_CAN_Message_t rxMessage;
+d_CAN_Message_t txMessage = {d_TRUE, 0x123, 0, d_FALSE, d_FALSE, 8, {0xDE, 0xAD, 0xBE, 0xEF, 0xCA, 0xFE, 0xBA, 0xBE}};
+
+static d_Status_t uart_init(void);
+static d_Status_t can_init(void);
+static void can_holt_init(void);
+
+Int32_t main()
+{
+	d_Status_t uart_init_status = d_STATUS_SUCCESS;
+	d_Status_t can_init_status = d_STATUS_SUCCESS;
+	d_Status_t gpio_read_status = d_STATUS_SUCCESS;
+	Uint32_t pinStatus = 0;
+
+	uart_init_status = uart_init();
+	can_init_status = can_init();
+
+	if((uart_init_status == d_STATUS_SUCCESS) && (can_init_status == d_STATUS_SUCCESS))
+	{
+		GLOBAL_SerialPrint_Simple(" Reading Discrete on the SoC of FC-200.\n\r");
+
+		/* Debug */
+		while(1)
+		{
+			gpio_read_status = d_DISC_ReadPin(d_DISC_MIO_52, &pinStatus);
+
+			if(gpio_read_status == d_STATUS_SUCCESS)
+			{
+				if( (pinStatus & BIT_SET) != 0)
+				{
+					GLOBAL_SerialPrint_Simple(" GPIO is set.\n\r");
+				}
+				else
+				{
+					GLOBAL_SerialPrint_Simple(" GPIO is reset.\n\r");
+				}
+			}
+
+			d_CAN_SendMessage(0, &txMessage);
+
+			d_TIMER_DelayMilliseconds(20);
+
+
+		}
+	}
+
+}
+
+static d_Status_t uart_init(void)
+{
+
+	d_Status_t retVal = d_STATUS_SUCCESS;
+
+	/* Initialize UART 0 */
+	retVal = d_UART_Configure(UART_CHANNEL, UART_BAUD, d_UART_DATA_BITS_8, d_UART_PARITY_NONE, d_UART_STOP_BITS_1);
+
+	return retVal;
+}
+
+static d_Status_t                                  /** \return d_STATUS_SUCCESS if the operation was successful */
+can_init
+(
+	void                                      /** NONE */
+)
+{
+  d_Status_t setupValue = d_STATUS_SUCCESS;
+
+  // Initialise the PS CAN interfaces.
+  for(Uint8_t i=0; i<d_CAN_MAX_INTERFACES; i++)
+  {
+    setupValue = d_CAN_Initialise(i);
+
+    if(setupValue == d_STATUS_SUCCESS)
+    {
+      setupValue = d_CAN_ModeSet(i, d_CAN_MODE_NORMAL);
+    }
+    if(setupValue == d_STATUS_SUCCESS)
+    {
+      CANInitialised[i] = d_TRUE;
+    }
+    else
+    {
+      CANInitialised[i] = d_FALSE;
+    }
+  }  // End FOR each PS CAN interface.
+
+
+  /* Enable all interrupts in CAN device. */
+//  Insert this to trigger the PS CAN 0 device interrupts.   Currently using polled methods, not interrupts
+//  d_CAN_InterruptEnable(0, XCANPS_IXR_ALL);
+//  d_INT_IrqEnable(d_CAN_Config[0].interruptNumber);
+//  d_CAN_InterruptEnable(1, XCANPS_IXR_ALL);
+//  d_INT_IrqEnable(d_CAN_Config[1].interruptNumber);
+
+	return (d_STATUS_SUCCESS);  // This is currently just returning success. On startup each individual interface can pass/fail depending on availability.
+}
+
+
+static void can_holt_init(void)
+{
+
+	  // Initialise the HOLT CAN interfaces.
+	  for(Uint8_t i=0; i<3; i++)   // d_CAN_HOLT_COUNT should have the correct number based on d_can_holt_cfg, but the build fails when trying to use this constant here.
+	  {
+	    setupValue = d_CAN_HOLT_Initialise(i);
+
+	    if(setupValue == d_STATUS_SUCCESS)
+	    {
+	      setupValue = d_CAN_HOLT_FilterDisable(i);
+	    }
+	    if(setupValue == d_STATUS_SUCCESS)
+	    {
+	        setupValue = d_CAN_HOLT_ModeSet(i, d_CAN_HOLT_MODE_NORMAL);
+	    }
+	    if(setupValue == d_STATUS_SUCCESS)
+	    {
+	      CANHOLTInitialised[i] = d_TRUE;
+	    }
+	    else
+	    {
+	      CANHOLTInitialised[i] = d_FALSE;
+	    }
+	  }  // End FOR each HOLT CAN interface
+
+}

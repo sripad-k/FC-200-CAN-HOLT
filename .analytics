@@ -1,0 +1,49 @@
+timestamp=[2025-10-03 10:44:26], mode=WORKBENCH_START, duration=0:00:05.143, duration_ms=5143, data={}
+timestamp=[2025-10-03 10:44:26], mode=WORKBENCH_UI_INIT, duration=0:00:00.397, duration_ms=397, data={editors_count=0, platform_editors_count=0, projects_count=0, platform_projects_count=0, active_platform_editor=false, projects=}
+timestamp=[2025-10-03 10:44:32], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:05.044, duration_ms=5044, data={}
+timestamp=[2025-10-03 10:46:41], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:04.295, duration_ms=4295, data={}
+timestamp=[2025-10-03 10:49:23], mode=WORKBENCH_START, duration=0:00:06.665, duration_ms=6665, data={}
+timestamp=[2025-10-03 10:49:23], mode=WORKBENCH_UI_INIT, duration=0:00:00.780, duration_ms=780, data={editors_count=0, platform_editors_count=0, projects_count=2, platform_projects_count=1, active_platform_editor=false, projects=136T-2200-113050-001-F11-02,RemoteSystemsTempFiles}
+timestamp=[2025-10-03 10:49:31], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:06.475, duration_ms=6475, data={}
+timestamp=[2025-10-03 10:50:04], mode=APP_CREATION, duration=0:00:02.871, duration_ms=2871, data={name=can_holt, project_type=sdk, os=standalone, processor=cortex-r5, runtime=C/C++, platform=136T-2200-113050-001-F11-02, application_type=application}
+timestamp=[2025-10-03 13:49:31], mode=PLATFORM_GENERATION, duration=0:00:23.809, duration_ms=23809, data={name=136T-2200-113050-001-F11-02}
+timestamp=[2025-10-03 13:51:11], mode=PLATFORM_GENERATION, duration=0:01:23.117, duration_ms=83117, data={name=136T-2200-113050-001-F11-02}
+timestamp=[2025-10-03 13:51:12], mode=BUILD, duration=0:00:01.052, duration_ms=1052, data={name=can_holt, configuration=Debug, clean_build=false}
+timestamp=[2025-10-03 13:51:16], mode=BUILD, duration=0:00:02.440, duration_ms=2440, data={name=can_holt_system, configuration=Debug, clean_build=false}
+timestamp=[2025-10-03 13:53:18], mode=PLATFORM_GENERATION, duration=0:00:24.706, duration_ms=24706, data={name=136T-2200-113050-001-F11-02}
+timestamp=[2025-10-03 13:53:19], mode=BUILD, duration=0:00:01.433, duration_ms=1433, data={name=can_holt, configuration=Debug, clean_build=true}
+timestamp=[2025-10-03 13:53:19], mode=BUILD, duration=0:00:00.308, duration_ms=308, data={name=can_holt_system, configuration=Debug, clean_build=true}
+timestamp=[2025-10-03 13:55:12], mode=PLATFORM_GENERATION, duration=0:01:09.541, duration_ms=69541, data={name=136T-2200-113050-001-F11-02}
+timestamp=[2025-10-03 13:55:13], mode=BUILD, duration=0:00:00.404, duration_ms=404, data={name=can_holt, configuration=Debug, clean_build=true}
+timestamp=[2025-10-03 13:55:59], mode=BUILD, duration=0:00:45.814, duration_ms=45814, data={name=can_holt, configuration=Debug, clean_build=false}
+timestamp=[2025-10-03 13:56:07], mode=BUILD, duration=0:00:07.784, duration_ms=7784, data={name=can_holt_system, configuration=Debug, clean_build=false}
+timestamp=[2025-10-03 14:09:59], mode=PLATFORM_GENERATION, duration=0:00:22.390, duration_ms=22390, data={name=136T-2200-113050-001-F11-02}
+timestamp=[2025-10-03 14:10:00], mode=BUILD, duration=0:00:01.391, duration_ms=1391, data={name=can_holt, configuration=Debug, clean_build=true}
+timestamp=[2025-10-03 14:10:00], mode=BUILD, duration=0:00:00.342, duration_ms=342, data={name=can_holt_system, configuration=Debug, clean_build=true}
+timestamp=[2025-10-03 14:11:21], mode=PLATFORM_GENERATION, duration=0:01:09.482, duration_ms=69482, data={name=136T-2200-113050-001-F11-02}
+timestamp=[2025-10-03 14:12:10], mode=BUILD, duration=0:00:48.367, duration_ms=48367, data={name=can_holt, configuration=Debug, clean_build=false}
+timestamp=[2025-10-03 14:12:17], mode=BUILD, duration=0:00:07.304, duration_ms=7304, data={name=can_holt_system, configuration=Debug, clean_build=false}
+timestamp=[2025-10-03 14:12:27], mode=BUILD, duration=0:00:01.742, duration_ms=1742, data={name=can_holt, configuration=Debug, clean_build=false}
+timestamp=[2025-10-03 14:52:53], mode=BUILD, duration=0:00:04.687, duration_ms=4687, data={name=can_holt, configuration=Debug, clean_build=false}
+timestamp=[2025-10-03 14:54:15], mode=BUILD, duration=0:00:04.310, duration_ms=4310, data={name=can_holt, configuration=Debug, clean_build=false}
+timestamp=[2025-10-03 14:56:04], mode=BUILD, duration=0:00:03.181, duration_ms=3181, data={name=can_holt, configuration=Debug, clean_build=false}
+timestamp=[2025-10-03 14:56:38], mode=BUILD, duration=0:00:03.004, duration_ms=3004, data={name=can_holt, configuration=Debug, clean_build=false}
+timestamp=[2025-10-03 15:02:35], mode=BUILD, duration=0:00:03.592, duration_ms=3592, data={name=can_holt, configuration=Debug, clean_build=false}
+timestamp=[2025-10-03 15:03:54], mode=BUILD, duration=0:00:01.915, duration_ms=1915, data={name=can_holt, configuration=Debug, clean_build=false}
+timestamp=[2025-10-03 15:04:44], mode=BUILD, duration=0:00:01.850, duration_ms=1850, data={name=can_holt, configuration=Debug, clean_build=false}
+timestamp=[2025-10-03 15:08:13], mode=BUILD, duration=0:00:09.310, duration_ms=9310, data={name=can_holt, configuration=Debug, clean_build=false}
+timestamp=[2025-10-03 15:12:21], mode=BUILD, duration=0:00:01.688, duration_ms=1688, data={name=can_holt, configuration=Debug, clean_build=false}
+timestamp=[2025-10-03 15:13:40], mode=BUILD, duration=0:00:01.688, duration_ms=1688, data={name=can_holt, configuration=Debug, clean_build=false}
+timestamp=[2025-10-06 10:10:53], mode=WORKBENCH_START, duration=0:00:12.428, duration_ms=12428, data={}
+timestamp=[2025-10-06 10:10:54], mode=WORKBENCH_UI_INIT, duration=0:00:00.595, duration_ms=595, data={editors_count=16, platform_editors_count=0, projects_count=4, platform_projects_count=1, active_platform_editor=false, projects=136T-2200-113050-001-F11-02,RemoteSystemsTempFiles,can_holt,can_holt_system}
+timestamp=[2025-10-06 10:10:54], mode=PLATFORM_REPOSITORY_INIT, duration=0:00:00.130, duration_ms=130, data={}
+timestamp=[2025-10-06 10:41:10], mode=BUILD, duration=0:00:08.797, duration_ms=8797, data={name=can_holt, configuration=Debug, clean_build=false}
+timestamp=[2025-10-06 10:51:06], mode=PLATFORM_GENERATION, duration=0:00:30.415, duration_ms=30415, data={name=136T-2200-113050-001-F11-02}
+timestamp=[2025-10-06 10:51:06], mode=BUILD, duration=0:00:00.494, duration_ms=494, data={name=can_holt, configuration=Debug, clean_build=true}
+timestamp=[2025-10-06 10:51:07], mode=BUILD, duration=0:00:00.157, duration_ms=157, data={name=can_holt_system, configuration=Debug, clean_build=true}
+timestamp=[2025-10-06 10:52:33], mode=PLATFORM_GENERATION, duration=0:01:21.900, duration_ms=81900, data={name=136T-2200-113050-001-F11-02}
+timestamp=[2025-10-06 10:53:27], mode=BUILD, duration=0:00:53.239, duration_ms=53239, data={name=can_holt, configuration=Debug, clean_build=false}
+timestamp=[2025-10-06 10:53:36], mode=BUILD, duration=0:00:08.265, duration_ms=8265, data={name=can_holt_system, configuration=Debug, clean_build=false}
+timestamp=[2025-10-06 10:58:33], mode=PLATFORM_GENERATION, duration=0:00:07.814, duration_ms=7814, data={name=136T-2200-113050-001-F11-02}
+timestamp=[2025-10-06 10:58:33], mode=BUILD, duration=0:00:00.412, duration_ms=412, data={name=can_holt, configuration=Debug, clean_build=true}
+timestamp=[2025-10-06 10:58:33], mode=BUILD, duration=0:00:00.148, duration_ms=148, data={name=can_holt_system, configuration=Debug, clean_build=true}
