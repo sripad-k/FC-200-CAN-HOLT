@@ -898,3 +898,861 @@ con
 
 10:54:30 INFO  : Launch script is exported to file 'C:\Users\SripadKulkarni\workspace\FC-200-CAN-HOLT\can_holt_system\_ide\scripts\fc-1.tcl'
 10:56:54 INFO  : Disconnected from the channel tcfchan#6.
+11:32:26 INFO  : Result from executing command 'getProjects': 136T-2200-113050-001-F11-02
+11:32:26 INFO  : Result from executing command 'getPlatforms': 136T-2200-113050-001-F11-02|C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/136T-2200-113050-001-F11-02.xpfm
+11:32:26 INFO  : Checking for BSP changes to sync application flags for project 'can_holt'...
+11:37:32 INFO  : Connected through redirection to target on host '10.0.0.2' and port '3121'.
+11:37:32 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+11:37:32 INFO  : Jtag cable 'JTAG Cable 2020.2 AAo1HToQ0' is selected.
+11:37:32 INFO  : 'jtag frequency' command is executed.
+11:37:32 INFO  : Sourcing of 'C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl' is done.
+11:37:32 INFO  : Context for 'APU' is selected.
+11:37:33 INFO  : System reset is completed.
+11:37:36 INFO  : 'after 3000' command is executed.
+11:37:36 INFO  : Context for 'RPU' is selected.
+11:37:36 INFO  : Split mode is enabled for R5#1
+11:37:36 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+11:37:36 INFO  : 'targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}' command is executed.
+11:37:41 INFO  : Device configured successfully with "C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit"
+11:37:41 INFO  : Context for 'APU' is selected.
+11:37:41 INFO  : Hardware design and registers information is loaded from 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa'.
+11:37:41 INFO  : 'configparams force-mem-access 1' command is executed.
+11:37:41 INFO  : Context for 'APU' is selected.
+11:37:41 INFO  : Boot mode is read from the target.
+11:37:41 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+11:37:41 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+11:37:41 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf' is downloaded to processor 'psu_cortexr5_0'.
+11:37:41 INFO  : 'set bp_37_41_fsbl_bp [bpadd -addr &XFsbl_Exit]' command is executed.
+11:37:43 INFO  : 'con -block -timeout 60' command is executed.
+11:37:43 INFO  : 'bpremove $bp_37_41_fsbl_bp' command is executed.
+11:37:43 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+11:37:43 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+11:37:43 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf' is downloaded to processor 'psu_cortexr5_0'.
+11:37:43 INFO  : 'configparams force-mem-access 0' command is executed.
+11:37:43 INFO  : ----------------XSDB Script----------------
+connect -path [list tcp::1534 tcp:10.0.0.2:3121]
+source C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"RPU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+enable_split_mode
+targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}
+fpga -file C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+loadhw -hw C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+set mode [expr [mrd -value 0xFF5E0200] & 0xf]
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf
+set bp_37_41_fsbl_bp [bpadd -addr &XFsbl_Exit]
+con -block -timeout 60
+bpremove $bp_37_41_fsbl_bp
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:37:43 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+11:37:43 INFO  : 'con' command is executed.
+11:37:43 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+con
+----------------End of Script----------------
+
+11:37:43 INFO  : Launch script is exported to file 'C:\Users\SripadKulkarni\workspace\FC-200-CAN-HOLT\can_holt_system\_ide\scripts\fc-1.tcl'
+11:46:22 INFO  : Disconnected from the channel tcfchan#10.
+11:50:35 INFO  : Result from executing command 'getProjects': 136T-2200-113050-001-F11-02
+11:50:35 INFO  : Result from executing command 'getPlatforms': 136T-2200-113050-001-F11-02|C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/136T-2200-113050-001-F11-02.xpfm
+11:50:36 INFO  : Checking for BSP changes to sync application flags for project 'can_holt'...
+11:51:46 INFO  : Connected through redirection to target on host '10.0.0.2' and port '3121'.
+11:51:46 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+11:51:46 INFO  : Jtag cable 'JTAG Cable 2020.2 AAo1HToQ0' is selected.
+11:51:46 INFO  : 'jtag frequency' command is executed.
+11:51:46 INFO  : Sourcing of 'C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl' is done.
+11:51:46 INFO  : Context for 'APU' is selected.
+11:51:47 INFO  : System reset is completed.
+11:51:50 INFO  : 'after 3000' command is executed.
+11:51:50 INFO  : Context for 'RPU' is selected.
+11:51:50 INFO  : Split mode is enabled for R5#1
+11:51:50 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+11:51:50 INFO  : 'targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}' command is executed.
+11:51:55 INFO  : Device configured successfully with "C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit"
+11:51:55 INFO  : Context for 'APU' is selected.
+11:51:55 INFO  : Hardware design and registers information is loaded from 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa'.
+11:51:55 INFO  : 'configparams force-mem-access 1' command is executed.
+11:51:55 INFO  : Context for 'APU' is selected.
+11:51:55 INFO  : Boot mode is read from the target.
+11:51:55 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+11:51:55 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+11:51:55 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf' is downloaded to processor 'psu_cortexr5_0'.
+11:51:55 INFO  : 'set bp_51_55_fsbl_bp [bpadd -addr &XFsbl_Exit]' command is executed.
+11:51:56 INFO  : 'con -block -timeout 60' command is executed.
+11:51:56 INFO  : 'bpremove $bp_51_55_fsbl_bp' command is executed.
+11:51:56 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+11:51:56 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+11:51:57 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf' is downloaded to processor 'psu_cortexr5_0'.
+11:51:57 INFO  : 'configparams force-mem-access 0' command is executed.
+11:51:57 INFO  : ----------------XSDB Script----------------
+connect -path [list tcp::1534 tcp:10.0.0.2:3121]
+source C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"RPU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+enable_split_mode
+targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}
+fpga -file C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+loadhw -hw C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+set mode [expr [mrd -value 0xFF5E0200] & 0xf]
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf
+set bp_51_55_fsbl_bp [bpadd -addr &XFsbl_Exit]
+con -block -timeout 60
+bpremove $bp_51_55_fsbl_bp
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+11:51:57 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+11:51:57 INFO  : 'con' command is executed.
+11:51:57 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+con
+----------------End of Script----------------
+
+11:51:57 INFO  : Launch script is exported to file 'C:\Users\SripadKulkarni\workspace\FC-200-CAN-HOLT\can_holt_system\_ide\scripts\fc-1.tcl'
+12:04:20 INFO  : Checking for BSP changes to sync application flags for project 'can_holt'...
+12:05:07 INFO  : Checking for BSP changes to sync application flags for project 'can_holt'...
+12:06:01 INFO  : Checking for BSP changes to sync application flags for project 'can_holt'...
+12:06:09 INFO  : Disconnected from the channel tcfchan#14.
+12:06:18 INFO  : Connected through redirection to target on host '10.0.0.2' and port '3121'.
+12:06:18 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+12:06:18 INFO  : Jtag cable 'JTAG Cable 2020.2 AAo1HToQ0' is selected.
+12:06:18 INFO  : 'jtag frequency' command is executed.
+12:06:18 INFO  : Sourcing of 'C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl' is done.
+12:06:18 INFO  : Context for 'APU' is selected.
+12:06:19 INFO  : System reset is completed.
+12:06:22 INFO  : 'after 3000' command is executed.
+12:06:22 INFO  : Context for 'RPU' is selected.
+12:06:22 INFO  : Split mode is enabled for R5#1
+12:06:22 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+12:06:22 INFO  : 'targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}' command is executed.
+12:06:27 INFO  : Device configured successfully with "C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit"
+12:06:27 INFO  : Context for 'APU' is selected.
+12:06:27 INFO  : Hardware design and registers information is loaded from 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa'.
+12:06:27 INFO  : 'configparams force-mem-access 1' command is executed.
+12:06:27 INFO  : Context for 'APU' is selected.
+12:06:27 INFO  : Boot mode is read from the target.
+12:06:27 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+12:06:27 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+12:06:27 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf' is downloaded to processor 'psu_cortexr5_0'.
+12:06:27 INFO  : 'set bp_6_27_fsbl_bp [bpadd -addr &XFsbl_Exit]' command is executed.
+12:06:28 INFO  : 'con -block -timeout 60' command is executed.
+12:06:28 INFO  : 'bpremove $bp_6_27_fsbl_bp' command is executed.
+12:06:28 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+12:06:28 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+12:06:29 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf' is downloaded to processor 'psu_cortexr5_0'.
+12:06:29 INFO  : 'configparams force-mem-access 0' command is executed.
+12:06:29 INFO  : ----------------XSDB Script----------------
+connect -path [list tcp::1534 tcp:10.0.0.2:3121]
+source C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"RPU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+enable_split_mode
+targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}
+fpga -file C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+loadhw -hw C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+set mode [expr [mrd -value 0xFF5E0200] & 0xf]
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf
+set bp_6_27_fsbl_bp [bpadd -addr &XFsbl_Exit]
+con -block -timeout 60
+bpremove $bp_6_27_fsbl_bp
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+12:06:29 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+12:06:29 INFO  : 'con' command is executed.
+12:06:29 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+con
+----------------End of Script----------------
+
+12:06:29 INFO  : Launch script is exported to file 'C:\Users\SripadKulkarni\workspace\FC-200-CAN-HOLT\can_holt_system\_ide\scripts\fc-1.tcl'
+12:07:02 INFO  : Disconnected from the channel tcfchan#15.
+13:26:55 INFO  : Connected through redirection to target on host '10.0.0.2' and port '3121'.
+13:26:55 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+13:26:55 INFO  : Jtag cable 'JTAG Cable 2020.2 AAo1HToQ0' is selected.
+13:26:55 INFO  : 'jtag frequency' command is executed.
+13:26:55 INFO  : Sourcing of 'C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl' is done.
+13:26:55 INFO  : Context for 'APU' is selected.
+13:26:56 INFO  : System reset is completed.
+13:26:59 INFO  : 'after 3000' command is executed.
+13:26:59 INFO  : Context for 'RPU' is selected.
+13:26:59 INFO  : Split mode is enabled for R5#1
+13:26:59 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+13:26:59 INFO  : 'targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}' command is executed.
+13:27:04 INFO  : Device configured successfully with "C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit"
+13:27:04 INFO  : Context for 'APU' is selected.
+13:27:04 INFO  : Hardware design and registers information is loaded from 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa'.
+13:27:04 INFO  : 'configparams force-mem-access 1' command is executed.
+13:27:04 INFO  : Context for 'APU' is selected.
+13:27:04 INFO  : Boot mode is read from the target.
+13:27:04 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+13:27:04 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+13:27:04 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf' is downloaded to processor 'psu_cortexr5_0'.
+13:27:04 INFO  : 'set bp_27_4_fsbl_bp [bpadd -addr &XFsbl_Exit]' command is executed.
+13:27:05 INFO  : 'con -block -timeout 60' command is executed.
+13:27:05 INFO  : 'bpremove $bp_27_4_fsbl_bp' command is executed.
+13:27:05 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+13:27:05 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+13:27:06 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf' is downloaded to processor 'psu_cortexr5_0'.
+13:27:06 INFO  : 'configparams force-mem-access 0' command is executed.
+13:27:06 INFO  : ----------------XSDB Script----------------
+connect -path [list tcp::1534 tcp:10.0.0.2:3121]
+source C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"RPU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+enable_split_mode
+targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}
+fpga -file C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+loadhw -hw C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+set mode [expr [mrd -value 0xFF5E0200] & 0xf]
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf
+set bp_27_4_fsbl_bp [bpadd -addr &XFsbl_Exit]
+con -block -timeout 60
+bpremove $bp_27_4_fsbl_bp
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+13:27:06 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+13:27:06 INFO  : 'con' command is executed.
+13:27:06 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+con
+----------------End of Script----------------
+
+13:27:06 INFO  : Launch script is exported to file 'C:\Users\SripadKulkarni\workspace\FC-200-CAN-HOLT\can_holt_system\_ide\scripts\fc-1.tcl'
+13:48:33 INFO  : Disconnected from the channel tcfchan#16.
+14:00:00 INFO  : Checking for BSP changes to sync application flags for project 'can_holt'...
+14:03:46 INFO  : Result from executing command 'getProjects': 136T-2200-113050-001-F11-02
+14:03:46 INFO  : Result from executing command 'getPlatforms': 136T-2200-113050-001-F11-02|C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/136T-2200-113050-001-F11-02.xpfm
+14:03:46 INFO  : Checking for BSP changes to sync application flags for project 'can_holt'...
+14:17:57 INFO  : Connected through redirection to target on host '10.0.0.2' and port '3121'.
+14:17:57 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+14:17:57 INFO  : Jtag cable 'JTAG Cable 2020.2 AAo1HToQ0' is selected.
+14:17:57 INFO  : 'jtag frequency' command is executed.
+14:17:57 INFO  : Sourcing of 'C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl' is done.
+14:17:57 INFO  : Context for 'APU' is selected.
+14:17:58 INFO  : System reset is completed.
+14:18:01 INFO  : 'after 3000' command is executed.
+14:18:01 INFO  : Context for 'RPU' is selected.
+14:18:01 INFO  : Split mode is enabled for R5#1
+14:18:01 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+14:18:01 INFO  : 'targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}' command is executed.
+14:18:06 INFO  : Device configured successfully with "C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit"
+14:18:06 INFO  : Context for 'APU' is selected.
+14:18:06 INFO  : Hardware design and registers information is loaded from 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa'.
+14:18:06 INFO  : 'configparams force-mem-access 1' command is executed.
+14:18:06 INFO  : Context for 'APU' is selected.
+14:18:06 INFO  : Boot mode is read from the target.
+14:18:06 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+14:18:06 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+14:18:06 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf' is downloaded to processor 'psu_cortexr5_0'.
+14:18:06 INFO  : 'set bp_18_6_fsbl_bp [bpadd -addr &XFsbl_Exit]' command is executed.
+14:18:07 INFO  : 'con -block -timeout 60' command is executed.
+14:18:07 INFO  : 'bpremove $bp_18_6_fsbl_bp' command is executed.
+14:18:07 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+14:18:07 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+14:18:08 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf' is downloaded to processor 'psu_cortexr5_0'.
+14:18:08 INFO  : 'configparams force-mem-access 0' command is executed.
+14:18:08 INFO  : ----------------XSDB Script----------------
+connect -path [list tcp::1534 tcp:10.0.0.2:3121]
+source C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"RPU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+enable_split_mode
+targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}
+fpga -file C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+loadhw -hw C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+set mode [expr [mrd -value 0xFF5E0200] & 0xf]
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf
+set bp_18_6_fsbl_bp [bpadd -addr &XFsbl_Exit]
+con -block -timeout 60
+bpremove $bp_18_6_fsbl_bp
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:18:08 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+14:18:08 INFO  : 'con' command is executed.
+14:18:08 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+con
+----------------End of Script----------------
+
+14:18:08 INFO  : Launch script is exported to file 'C:\Users\SripadKulkarni\workspace\FC-200-CAN-HOLT\can_holt_system\_ide\scripts\fc-1.tcl'
+14:19:09 INFO  : Disconnected from the channel tcfchan#20.
+14:19:12 INFO  : Connected through redirection to target on host '10.0.0.2' and port '3121'.
+14:19:12 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+14:19:12 INFO  : Jtag cable 'JTAG Cable 2020.2 AAo1HToQ0' is selected.
+14:19:12 INFO  : 'jtag frequency' command is executed.
+14:19:12 INFO  : Sourcing of 'C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl' is done.
+14:19:12 INFO  : Context for 'APU' is selected.
+14:19:13 INFO  : System reset is completed.
+14:19:16 INFO  : 'after 3000' command is executed.
+14:19:16 INFO  : Context for 'RPU' is selected.
+14:19:16 INFO  : Split mode is enabled for R5#1
+14:19:16 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+14:19:16 INFO  : 'targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}' command is executed.
+14:19:21 INFO  : Device configured successfully with "C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit"
+14:19:21 INFO  : Context for 'APU' is selected.
+14:19:21 INFO  : Hardware design and registers information is loaded from 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa'.
+14:19:21 INFO  : 'configparams force-mem-access 1' command is executed.
+14:19:21 INFO  : Context for 'APU' is selected.
+14:19:21 INFO  : Boot mode is read from the target.
+14:19:21 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+14:19:21 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+14:19:21 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf' is downloaded to processor 'psu_cortexr5_0'.
+14:19:21 INFO  : 'set bp_19_21_fsbl_bp [bpadd -addr &XFsbl_Exit]' command is executed.
+14:19:22 INFO  : 'con -block -timeout 60' command is executed.
+14:19:22 INFO  : 'bpremove $bp_19_21_fsbl_bp' command is executed.
+14:19:22 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+14:19:22 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+14:19:23 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf' is downloaded to processor 'psu_cortexr5_0'.
+14:19:23 INFO  : 'configparams force-mem-access 0' command is executed.
+14:19:23 INFO  : ----------------XSDB Script----------------
+connect -path [list tcp::1534 tcp:10.0.0.2:3121]
+source C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"RPU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+enable_split_mode
+targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}
+fpga -file C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+loadhw -hw C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+set mode [expr [mrd -value 0xFF5E0200] & 0xf]
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf
+set bp_19_21_fsbl_bp [bpadd -addr &XFsbl_Exit]
+con -block -timeout 60
+bpremove $bp_19_21_fsbl_bp
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:19:23 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+14:19:23 INFO  : 'con' command is executed.
+14:19:23 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+con
+----------------End of Script----------------
+
+14:19:23 INFO  : Launch script is exported to file 'C:\Users\SripadKulkarni\workspace\FC-200-CAN-HOLT\can_holt_system\_ide\scripts\fc-1.tcl'
+14:31:27 INFO  : Disconnected from the channel tcfchan#21.
+14:31:42 INFO  : Checking for BSP changes to sync application flags for project 'can_holt'...
+14:32:33 INFO  : Connected through redirection to target on host '10.0.0.2' and port '3121'.
+14:32:34 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+14:32:34 INFO  : Jtag cable 'JTAG Cable 2020.2 AAo1HToQ0' is selected.
+14:32:34 INFO  : 'jtag frequency' command is executed.
+14:32:34 INFO  : Sourcing of 'C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl' is done.
+14:32:34 INFO  : Context for 'APU' is selected.
+14:32:35 INFO  : System reset is completed.
+14:32:38 INFO  : 'after 3000' command is executed.
+14:32:38 INFO  : Context for 'RPU' is selected.
+14:32:38 INFO  : Split mode is enabled for R5#1
+14:32:38 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+14:32:38 INFO  : 'targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}' command is executed.
+14:32:42 INFO  : Device configured successfully with "C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit"
+14:32:42 INFO  : Context for 'APU' is selected.
+14:32:42 INFO  : Hardware design and registers information is loaded from 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa'.
+14:32:42 INFO  : 'configparams force-mem-access 1' command is executed.
+14:32:42 INFO  : Context for 'APU' is selected.
+14:32:42 INFO  : Boot mode is read from the target.
+14:32:42 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+14:32:42 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+14:32:43 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf' is downloaded to processor 'psu_cortexr5_0'.
+14:32:43 INFO  : 'set bp_32_43_fsbl_bp [bpadd -addr &XFsbl_Exit]' command is executed.
+14:32:44 INFO  : 'con -block -timeout 60' command is executed.
+14:32:44 INFO  : 'bpremove $bp_32_43_fsbl_bp' command is executed.
+14:32:44 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+14:32:44 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+14:32:44 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf' is downloaded to processor 'psu_cortexr5_0'.
+14:32:44 INFO  : 'configparams force-mem-access 0' command is executed.
+14:32:44 INFO  : ----------------XSDB Script----------------
+connect -path [list tcp::1534 tcp:10.0.0.2:3121]
+source C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"RPU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+enable_split_mode
+targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}
+fpga -file C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+loadhw -hw C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+set mode [expr [mrd -value 0xFF5E0200] & 0xf]
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf
+set bp_32_43_fsbl_bp [bpadd -addr &XFsbl_Exit]
+con -block -timeout 60
+bpremove $bp_32_43_fsbl_bp
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+14:32:45 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+14:32:45 INFO  : 'con' command is executed.
+14:32:45 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+con
+----------------End of Script----------------
+
+14:32:45 INFO  : Launch script is exported to file 'C:\Users\SripadKulkarni\workspace\FC-200-CAN-HOLT\can_holt_system\_ide\scripts\fc-1.tcl'
+14:33:45 INFO  : Disconnected from the channel tcfchan#22.
+14:58:44 INFO  : Result from executing command 'getProjects': 136T-2200-113050-001-F11-02
+14:58:44 INFO  : Result from executing command 'getPlatforms': 136T-2200-113050-001-F11-02|C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/136T-2200-113050-001-F11-02.xpfm
+14:58:44 INFO  : Checking for BSP changes to sync application flags for project 'can_holt'...
+15:01:46 INFO  : Checking for BSP changes to sync application flags for project 'can_holt'...
+15:02:46 INFO  : Connected through redirection to target on host '10.0.0.2' and port '3121'.
+15:02:47 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+15:02:47 INFO  : Jtag cable 'JTAG Cable 2020.2 AAo1HToQ0' is selected.
+15:02:47 INFO  : 'jtag frequency' command is executed.
+15:02:47 INFO  : Sourcing of 'C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl' is done.
+15:02:47 INFO  : Context for 'APU' is selected.
+15:02:48 INFO  : System reset is completed.
+15:02:51 INFO  : 'after 3000' command is executed.
+15:02:51 INFO  : Context for 'RPU' is selected.
+15:02:51 INFO  : Split mode is enabled for R5#1
+15:02:51 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+15:02:51 INFO  : 'targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}' command is executed.
+15:02:55 INFO  : Device configured successfully with "C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit"
+15:02:55 INFO  : Context for 'APU' is selected.
+15:02:56 INFO  : Hardware design and registers information is loaded from 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa'.
+15:02:56 INFO  : 'configparams force-mem-access 1' command is executed.
+15:02:56 INFO  : Context for 'APU' is selected.
+15:02:56 INFO  : Boot mode is read from the target.
+15:02:56 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+15:02:56 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+15:02:56 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf' is downloaded to processor 'psu_cortexr5_0'.
+15:02:56 INFO  : 'set bp_2_56_fsbl_bp [bpadd -addr &XFsbl_Exit]' command is executed.
+15:02:57 INFO  : 'con -block -timeout 60' command is executed.
+15:02:57 INFO  : 'bpremove $bp_2_56_fsbl_bp' command is executed.
+15:02:57 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+15:02:57 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+15:02:57 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf' is downloaded to processor 'psu_cortexr5_0'.
+15:02:57 INFO  : 'configparams force-mem-access 0' command is executed.
+15:02:57 INFO  : ----------------XSDB Script----------------
+connect -path [list tcp::1534 tcp:10.0.0.2:3121]
+source C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"RPU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+enable_split_mode
+targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}
+fpga -file C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+loadhw -hw C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+set mode [expr [mrd -value 0xFF5E0200] & 0xf]
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf
+set bp_2_56_fsbl_bp [bpadd -addr &XFsbl_Exit]
+con -block -timeout 60
+bpremove $bp_2_56_fsbl_bp
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:02:58 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+15:02:58 INFO  : 'con' command is executed.
+15:02:58 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+con
+----------------End of Script----------------
+
+15:02:58 INFO  : Launch script is exported to file 'C:\Users\SripadKulkarni\workspace\FC-200-CAN-HOLT\can_holt_system\_ide\scripts\fc-1.tcl'
+15:10:59 INFO  : Disconnected from the channel tcfchan#27.
+15:13:19 INFO  : Result from executing command 'getProjects': 136T-2200-113050-001-F11-02
+15:13:19 INFO  : Result from executing command 'getPlatforms': 136T-2200-113050-001-F11-02|C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/136T-2200-113050-001-F11-02.xpfm
+15:13:20 INFO  : Checking for BSP changes to sync application flags for project 'can_holt'...
+15:14:30 INFO  : Connected through redirection to target on host '10.0.0.2' and port '3121'.
+15:14:31 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+15:14:31 INFO  : Jtag cable 'JTAG Cable 2020.2 AAo1HToQ0' is selected.
+15:14:31 INFO  : 'jtag frequency' command is executed.
+15:14:31 INFO  : Sourcing of 'C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl' is done.
+15:14:31 INFO  : Context for 'APU' is selected.
+15:14:31 INFO  : System reset is completed.
+15:14:34 INFO  : 'after 3000' command is executed.
+15:14:34 INFO  : Context for 'RPU' is selected.
+15:14:34 INFO  : Split mode is enabled for R5#1
+15:14:34 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+15:14:34 INFO  : 'targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}' command is executed.
+15:14:39 INFO  : Device configured successfully with "C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit"
+15:14:39 INFO  : Context for 'APU' is selected.
+15:14:39 INFO  : Hardware design and registers information is loaded from 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa'.
+15:14:39 INFO  : 'configparams force-mem-access 1' command is executed.
+15:14:39 INFO  : Context for 'APU' is selected.
+15:14:39 INFO  : Boot mode is read from the target.
+15:14:39 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+15:14:39 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+15:14:39 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf' is downloaded to processor 'psu_cortexr5_0'.
+15:14:39 INFO  : 'set bp_14_39_fsbl_bp [bpadd -addr &XFsbl_Exit]' command is executed.
+15:14:41 INFO  : 'con -block -timeout 60' command is executed.
+15:14:41 INFO  : 'bpremove $bp_14_39_fsbl_bp' command is executed.
+15:14:41 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+15:14:41 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+15:14:41 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf' is downloaded to processor 'psu_cortexr5_0'.
+15:14:41 INFO  : 'configparams force-mem-access 0' command is executed.
+15:14:41 INFO  : ----------------XSDB Script----------------
+connect -path [list tcp::1534 tcp:10.0.0.2:3121]
+source C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"RPU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+enable_split_mode
+targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}
+fpga -file C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+loadhw -hw C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+set mode [expr [mrd -value 0xFF5E0200] & 0xf]
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf
+set bp_14_39_fsbl_bp [bpadd -addr &XFsbl_Exit]
+con -block -timeout 60
+bpremove $bp_14_39_fsbl_bp
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:14:41 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+15:14:41 INFO  : 'con' command is executed.
+15:14:41 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+con
+----------------End of Script----------------
+
+15:14:41 INFO  : Launch script is exported to file 'C:\Users\SripadKulkarni\workspace\FC-200-CAN-HOLT\can_holt_system\_ide\scripts\fc-1.tcl'
+15:17:45 INFO  : Disconnected from the channel tcfchan#31.
+15:17:49 INFO  : Checking for BSP changes to sync application flags for project 'can_holt'...
+15:18:57 INFO  : Connected through redirection to target on host '10.0.0.2' and port '3121'.
+15:18:57 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+15:18:57 INFO  : Jtag cable 'JTAG Cable 2020.2 AAo1HToQ0' is selected.
+15:18:57 INFO  : 'jtag frequency' command is executed.
+15:18:57 INFO  : Sourcing of 'C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl' is done.
+15:18:57 INFO  : Context for 'APU' is selected.
+15:18:58 INFO  : System reset is completed.
+15:19:01 INFO  : 'after 3000' command is executed.
+15:19:01 INFO  : Context for 'RPU' is selected.
+15:19:01 INFO  : Split mode is enabled for R5#1
+15:19:01 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+15:19:01 INFO  : 'targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}' command is executed.
+15:19:05 INFO  : Device configured successfully with "C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit"
+15:19:05 INFO  : Context for 'APU' is selected.
+15:19:06 INFO  : Hardware design and registers information is loaded from 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa'.
+15:19:06 INFO  : 'configparams force-mem-access 1' command is executed.
+15:19:06 INFO  : Context for 'APU' is selected.
+15:19:06 INFO  : Boot mode is read from the target.
+15:19:06 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+15:19:06 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+15:19:06 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf' is downloaded to processor 'psu_cortexr5_0'.
+15:19:06 INFO  : 'set bp_19_6_fsbl_bp [bpadd -addr &XFsbl_Exit]' command is executed.
+15:19:07 INFO  : 'con -block -timeout 60' command is executed.
+15:19:07 INFO  : 'bpremove $bp_19_6_fsbl_bp' command is executed.
+15:19:07 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+15:19:07 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+15:19:08 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf' is downloaded to processor 'psu_cortexr5_0'.
+15:19:08 INFO  : 'configparams force-mem-access 0' command is executed.
+15:19:08 INFO  : ----------------XSDB Script----------------
+connect -path [list tcp::1534 tcp:10.0.0.2:3121]
+source C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"RPU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+enable_split_mode
+targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}
+fpga -file C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+loadhw -hw C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+set mode [expr [mrd -value 0xFF5E0200] & 0xf]
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf
+set bp_19_6_fsbl_bp [bpadd -addr &XFsbl_Exit]
+con -block -timeout 60
+bpremove $bp_19_6_fsbl_bp
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:19:08 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+15:19:08 INFO  : 'con' command is executed.
+15:19:08 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+con
+----------------End of Script----------------
+
+15:19:08 INFO  : Launch script is exported to file 'C:\Users\SripadKulkarni\workspace\FC-200-CAN-HOLT\can_holt_system\_ide\scripts\fc-1.tcl'
+15:54:39 WARN  : channel "tcfchan#33" closed
+15:59:31 INFO  : Connected through redirection to target on host '10.0.0.2' and port '3121'.
+15:59:31 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+15:59:31 INFO  : Jtag cable 'JTAG Cable 2020.2 AAo1HToQ0' is selected.
+15:59:31 INFO  : 'jtag frequency' command is executed.
+15:59:31 INFO  : Sourcing of 'C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl' is done.
+15:59:31 INFO  : Context for 'APU' is selected.
+15:59:32 INFO  : System reset is completed.
+15:59:35 INFO  : 'after 3000' command is executed.
+15:59:35 INFO  : Context for 'RPU' is selected.
+15:59:35 INFO  : Split mode is enabled for R5#1
+15:59:35 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+15:59:35 INFO  : 'targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}' command is executed.
+15:59:40 INFO  : Device configured successfully with "C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit"
+15:59:40 INFO  : Context for 'APU' is selected.
+15:59:40 INFO  : Hardware design and registers information is loaded from 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa'.
+15:59:40 INFO  : 'configparams force-mem-access 1' command is executed.
+15:59:40 INFO  : Context for 'APU' is selected.
+15:59:40 INFO  : Boot mode is read from the target.
+15:59:40 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+15:59:40 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+15:59:40 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf' is downloaded to processor 'psu_cortexr5_0'.
+15:59:40 INFO  : 'set bp_59_40_fsbl_bp [bpadd -addr &XFsbl_Exit]' command is executed.
+15:59:41 INFO  : 'con -block -timeout 60' command is executed.
+15:59:41 INFO  : 'bpremove $bp_59_40_fsbl_bp' command is executed.
+15:59:41 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+15:59:41 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+15:59:42 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf' is downloaded to processor 'psu_cortexr5_0'.
+15:59:42 INFO  : 'configparams force-mem-access 0' command is executed.
+15:59:42 INFO  : ----------------XSDB Script----------------
+connect -path [list tcp::1534 tcp:10.0.0.2:3121]
+source C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"RPU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+enable_split_mode
+targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}
+fpga -file C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+loadhw -hw C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+set mode [expr [mrd -value 0xFF5E0200] & 0xf]
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf
+set bp_59_40_fsbl_bp [bpadd -addr &XFsbl_Exit]
+con -block -timeout 60
+bpremove $bp_59_40_fsbl_bp
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+15:59:42 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+15:59:42 INFO  : 'con' command is executed.
+15:59:42 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+con
+----------------End of Script----------------
+
+15:59:42 INFO  : Launch script is exported to file 'C:\Users\SripadKulkarni\workspace\FC-200-CAN-HOLT\can_holt_system\_ide\scripts\fc-1.tcl'
+16:07:33 INFO  : Disconnected from the channel tcfchan#34.
+16:07:39 INFO  : Checking for BSP changes to sync application flags for project 'can_holt'...
+16:09:10 INFO  : Checking for BSP changes to sync application flags for project 'can_holt'...
+16:10:18 INFO  : Connected through redirection to target on host '10.0.0.2' and port '3121'.
+16:10:18 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+16:10:19 INFO  : Jtag cable 'JTAG Cable 2020.2 AAo1HToQ0' is selected.
+16:10:19 INFO  : 'jtag frequency' command is executed.
+16:10:19 INFO  : Sourcing of 'C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl' is done.
+16:10:19 INFO  : Context for 'APU' is selected.
+16:10:19 INFO  : System reset is completed.
+16:10:22 INFO  : 'after 3000' command is executed.
+16:10:22 INFO  : Context for 'RPU' is selected.
+16:10:22 INFO  : Split mode is enabled for R5#1
+16:10:22 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+16:10:22 INFO  : 'targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}' command is executed.
+16:10:27 INFO  : Device configured successfully with "C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit"
+16:10:27 INFO  : Context for 'APU' is selected.
+16:10:27 INFO  : Hardware design and registers information is loaded from 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa'.
+16:10:27 INFO  : 'configparams force-mem-access 1' command is executed.
+16:10:27 INFO  : Context for 'APU' is selected.
+16:10:27 INFO  : Boot mode is read from the target.
+16:10:27 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+16:10:27 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+16:10:27 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf' is downloaded to processor 'psu_cortexr5_0'.
+16:10:27 INFO  : 'set bp_10_27_fsbl_bp [bpadd -addr &XFsbl_Exit]' command is executed.
+16:10:28 INFO  : 'con -block -timeout 60' command is executed.
+16:10:28 INFO  : 'bpremove $bp_10_27_fsbl_bp' command is executed.
+16:10:29 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+16:10:29 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+16:10:29 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf' is downloaded to processor 'psu_cortexr5_0'.
+16:10:29 INFO  : 'configparams force-mem-access 0' command is executed.
+16:10:29 INFO  : ----------------XSDB Script----------------
+connect -path [list tcp::1534 tcp:10.0.0.2:3121]
+source C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"RPU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+enable_split_mode
+targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}
+fpga -file C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+loadhw -hw C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+set mode [expr [mrd -value 0xFF5E0200] & 0xf]
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf
+set bp_10_27_fsbl_bp [bpadd -addr &XFsbl_Exit]
+con -block -timeout 60
+bpremove $bp_10_27_fsbl_bp
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+16:10:29 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+16:10:29 INFO  : 'con' command is executed.
+16:10:29 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+con
+----------------End of Script----------------
+
+16:10:29 INFO  : Launch script is exported to file 'C:\Users\SripadKulkarni\workspace\FC-200-CAN-HOLT\can_holt_system\_ide\scripts\fc-1.tcl'
+16:16:56 INFO  : Disconnected from the channel tcfchan#36.
+16:16:59 INFO  : Checking for BSP changes to sync application flags for project 'can_holt'...
+16:17:21 INFO  : Checking for BSP changes to sync application flags for project 'can_holt'...
+16:17:28 INFO  : Connected through redirection to target on host '10.0.0.2' and port '3121'.
+16:17:28 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+16:17:28 INFO  : Jtag cable 'JTAG Cable 2020.2 AAo1HToQ0' is selected.
+16:17:28 INFO  : 'jtag frequency' command is executed.
+16:17:28 INFO  : Sourcing of 'C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl' is done.
+16:17:28 INFO  : Context for 'APU' is selected.
+16:17:29 INFO  : System reset is completed.
+16:17:32 INFO  : 'after 3000' command is executed.
+16:17:32 INFO  : Context for 'RPU' is selected.
+16:17:32 INFO  : Split mode is enabled for R5#1
+16:17:32 ERROR : Could not read jtag device properties from the line: 7  dummy_dap (irlen 4)
+16:17:32 INFO  : 'targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}' command is executed.
+16:17:36 INFO  : Device configured successfully with "C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit"
+16:17:37 INFO  : Context for 'APU' is selected.
+16:17:37 INFO  : Hardware design and registers information is loaded from 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa'.
+16:17:37 INFO  : 'configparams force-mem-access 1' command is executed.
+16:17:37 INFO  : Context for 'APU' is selected.
+16:17:37 INFO  : Boot mode is read from the target.
+16:17:37 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+16:17:37 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+16:17:37 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf' is downloaded to processor 'psu_cortexr5_0'.
+16:17:37 INFO  : 'set bp_17_37_fsbl_bp [bpadd -addr &XFsbl_Exit]' command is executed.
+16:17:38 INFO  : 'con -block -timeout 60' command is executed.
+16:17:38 INFO  : 'bpremove $bp_17_37_fsbl_bp' command is executed.
+16:17:38 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+16:17:38 INFO  : Processor reset is completed for 'psu_cortexr5_0'.
+16:17:39 INFO  : The application 'C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf' is downloaded to processor 'psu_cortexr5_0'.
+16:17:39 INFO  : 'configparams force-mem-access 0' command is executed.
+16:17:39 INFO  : ----------------XSDB Script----------------
+connect -path [list tcp::1534 tcp:10.0.0.2:3121]
+source C:/Xilinx/Vitis/2020.2/scripts/vitis/util/zynqmp_utils.tcl
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -system
+after 3000
+targets -set -nocase -filter {name =~"RPU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+enable_split_mode
+targets -set -filter {jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && level==0 && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-14711093-0"}
+fpga -file C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/_ide/bitstream/fcu_wrapper.bit
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+loadhw -hw C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/hw/136T-2200-113050-001-F11-02.xsa -mem-ranges [list {0x80000000 0xbfffffff} {0x400000000 0x5ffffffff} {0x1000000000 0x7fffffffff}] -regs
+configparams force-mem-access 1
+targets -set -nocase -filter {name =~"APU*" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+set mode [expr [mrd -value 0xFF5E0200] & 0xf]
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf
+set bp_17_37_fsbl_bp [bpadd -addr &XFsbl_Exit]
+con -block -timeout 60
+bpremove $bp_17_37_fsbl_bp
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+rst -processor
+dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf
+configparams force-mem-access 0
+----------------End of Script----------------
+
+16:17:39 INFO  : Context for processor 'psu_cortexr5_0' is selected.
+16:17:39 INFO  : 'con' command is executed.
+16:17:39 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
+con
+----------------End of Script----------------
+
+16:17:39 INFO  : Launch script is exported to file 'C:\Users\SripadKulkarni\workspace\FC-200-CAN-HOLT\can_holt_system\_ide\scripts\fc-1.tcl'
+16:20:20 INFO  : Disconnected from the channel tcfchan#37.

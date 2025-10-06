@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="ASCII"?>
+<systemproject:SystemProject xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:sdsproject="http://www.xilinx.com/sdsproject" xmlns:systemproject="http://www.xilinx.com/systemproject" name="can_holt_system" platform="C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/136T-2200-113050-001-F11-02.xpfm" platformUID="xilinx:::0.0(custom)" sysConfig="136T-2200-113050-001-F11-02" runtime="C/C++" rootFSLocation="" linuxImage="" sysroot="">
+  <configuration name="Debug" id="com.xilinx.sdx.system.managedbuilder.debugConfiguration.2142935618">
+    <configBuildOptions xsi:type="systemproject:SystemOptions">
+      <applications name="can_holt" domainName="standalone_domain" domainPrettyName="standalone on psu_cortexr5_0" appBuildConfig="Debug"/>
+      <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
+    </configBuildOptions>
+    <lastBuildOptions xsi:type="systemproject:SystemOptions">
+      <applications name="can_holt" domainName="standalone_domain" domainPrettyName="standalone on psu_cortexr5_0" appBuildConfig="Debug"/>
+      <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
+    </lastBuildOptions>
+  </configuration>
+  <configuration name="Release" id="com.xilinx.sdx.system.managedbuilder.releaseConfiguration.1117325164">
+    <configBuildOptions xsi:type="systemproject:SystemOptions">
+      <applications name="can_holt" domainName="standalone_domain" domainPrettyName="standalone on psu_cortexr5_0" appBuildConfig="Release"/>
+      <options xsi:type="sdsproject:Option" gensdcard="true" dmclkid="0"/>
+    </configBuildOptions>
+  </configuration>
+</systemproject:SystemProject>

@@ -1,6 +1,6 @@
-10:58:25 **** Clean-only build of project 136T-2200-113050-001-F11-02 ****
+16:20:23 **** Clean-only build of project 136T-2200-113050-001-F11-02 ****
 buildplatform.bat 51954 136T-2200-113050-001-F11-02 clean 
-xsct% XSDB Server Channel: tcfchan#7
+xsct% XSDB Server Channel: tcfchan#38
 Cleaning the zynqmp_fsbl application.
 rm -rf  xfsbl_partition_load.o  xfsbl_qspi.o  xfsbl_csu_dma.o  xfsbl_nand.o  xfsbl_image_header.o  xfsbl_hooks.o  xfsbl_main.o 
  xfsbl_dfu_util.o  xfsbl_initialization.o  xfsbl_ddr_init.o  xfsbl_handoff.o  psu_init.o  xfsbl_sd.o  xfsbl_board.o  xfsbl_misc
@@ -175,5 +175,5 @@ make -C psu_cortexr5_0/libsrc/zdma_v1_10/src -s clean
 rm -f psu_cortexr5_0/lib/libxil.a
 
 
-10:58:33 Build Finished (took 7s.636ms)
+16:20:48 Build Finished (took 24s.191ms)
 

@@ -4,8 +4,8 @@
 #include "soc/defines/d_common_status.h"
 #include "soc/can/d_can_cfg.h"
 #include "soc/can/d_can.h"
-#include "sru/can_holt/d_can_holt.h"                  /* Discrete driver */
-#include "sru/can_holt/d_can_holt_cfg.h"              /* Discrete driver config */
+#include "sru/can_holt/d_can_holt.h"	 /* Discrete driver */
+#include "sru/can_holt/d_can_holt_cfg.h" /* Discrete driver config */
 #include "kernel/general/d_gen_string.h"
 #include "soc/discrete/d_discrete.h"
 #include "ETAS_global.h"
@@ -16,38 +16,41 @@
 static const Uint32_t UART_CHANNEL = 0U;
 static const Uint32_t UART_BAUD = 115200U;
 
-
 Bool_t CANInitialised[MAX_CAN_INTERFACE];
 Bool_t CANHOLTInitialised[MAX_CAN_HOLT_INTERFACE];
 
 d_CAN_Message_t rx1Message = {d_TRUE, 0x290, 0x0041, d_TRUE, d_FALSE, 8, {0xFC, 0xC1, 0, 0, 0, 0, 0, 0}};
 d_CAN_Message_t rx2Message = {d_TRUE, 0x290, 0x0042, d_TRUE, d_FALSE, 8, {0xFC, 0xC2, 0, 0, 0, 0, 0, 0}};
 
-d_CAN_HOLT_Filter_t filter = {d_TRUE, 0xFFF, 0x3FFFF, {0x00, 0x00}};
-d_CAN_HOLT_Filter_t mask1 = {d_TRUE, 0x290, 0x0043, {0x00, 0x00}};
-d_CAN_HOLT_Filter_t mask2 = {d_TRUE, 0x290, 0x0044, {0x00, 0x00}};
-d_CAN_HOLT_Filter_t mask3 = {d_TRUE, 0x290, 0x0045, {0x00, 0x00}};
+d_CAN_HOLT_Filter_t mask = {d_TRUE, 0x7FF, 0x3FFFF, {0x00, 0x00}};
 
-d_CAN_HOLT_Message_t rx3Message ;//= {d_TRUE, 0x290, 0x0043, d_TRUE, d_FALSE, 8, {0xFC, 0xC3, 0, 0, 0, 0, 0, 0}};
-d_CAN_HOLT_Message_t rx4Message ;//= {d_TRUE, 0x290, 0x0044, d_TRUE, d_FALSE, 8, {0xFC, 0xC4, 0, 0, 0, 0, 0, 0}};
-d_CAN_HOLT_Message_t rx5Message ;//= {d_TRUE, 0x290, 0x0045, d_TRUE, d_FALSE, 8, {0xFC, 0xC5, 0, 0, 0, 0, 0, 0}};
+d_CAN_HOLT_Filter_t can_holt_filter_config[MAX_CAN_HOLT_INTERFACE] = {
+	{d_TRUE, 0x290, 0x0043, {0x00, 0x00}},
+	{d_TRUE, 0x290, 0x0044, {0x00, 0x00}},
+	{d_TRUE, 0x290, 0x0045, {0x00, 0x00}}};
 
-d_CAN_Message_t tx1Message = {d_TRUE, 0x290, 0x0081, d_TRUE, d_FALSE, 8, {0xFC, 0xC1, 0xDF, 0xCC, 0xCA, 0xFE, 0xBA, 0xBE}};
-d_CAN_Message_t tx2Message = {d_TRUE, 0x290, 0x0082, d_TRUE, d_FALSE, 8, {0xFC, 0xC2, 0xDF, 0xCC, 0xCA, 0xFE, 0xBA, 0xBE}};
-d_CAN_HOLT_Message_t tx3Message = {d_TRUE, 0x290, 0x0083, d_TRUE, d_FALSE, 8, {0xFC, 0xC3, 0xDF, 0xCC, 0xCA, 0xFE, 0xBA, 0xBE}};
-d_CAN_HOLT_Message_t tx4Message = {d_TRUE, 0x290, 0x0084, d_TRUE, d_FALSE, 8, {0xFC, 0xC4, 0xDF, 0xCC, 0xCA, 0xFE, 0xBA, 0xBE}};
-d_CAN_HOLT_Message_t tx5Message = {d_TRUE, 0x290, 0x0085, d_TRUE, d_FALSE, 8, {0xFC, 0xC5, 0xDF, 0xCC, 0xCA, 0xFE, 0xBA, 0xBE}};
+d_CAN_HOLT_Message_t rx3Message;
+d_CAN_HOLT_Message_t rx4Message;
+d_CAN_HOLT_Message_t rx5Message;
 
+const d_CAN_Message_t tx1Message = {d_TRUE, 0x290, 0x0081, d_TRUE, d_FALSE, 8, {0xFC, 0xC1, 0xDF, 0xCC, 0xCA, 0xFE, 0xBA, 0xBE}};
+const d_CAN_Message_t tx2Message = {d_TRUE, 0x290, 0x0082, d_TRUE, d_FALSE, 8, {0xFC, 0xC2, 0xDF, 0xCC, 0xCA, 0xFE, 0xBA, 0xBE}};
+const d_CAN_HOLT_Message_t tx3Message = {d_TRUE, 0x290, 0x0083, d_TRUE, d_FALSE, 8, {0xFC, 0xC3, 0xDF, 0xCC, 0xCA, 0xFE, 0xBA, 0xBE}};
+const d_CAN_HOLT_Message_t tx4Message = {d_TRUE, 0x290, 0x0084, d_TRUE, d_FALSE, 8, {0xFC, 0xC4, 0xDF, 0xCC, 0xCA, 0xFE, 0xBA, 0xBE}};
+const d_CAN_HOLT_Message_t tx5Message = {d_TRUE, 0x290, 0x0085, d_TRUE, d_FALSE, 8, {0xFC, 0xC5, 0xDF, 0xCC, 0xCA, 0xFE, 0xBA, 0xBE}};
 
 static d_Status_t uart_init(void);
 static d_Status_t can_init(void);
-static void CAN_ReadMsg ( void );
-static void CAN_ReadHoltMsg ( void );
+static void CAN_ReadMsg(void);
+static void CAN_ReadHoltMsg(void);
+static d_Status_t CAN_Holt_Init_Filter(const Uint32_t channel, const Uint32_t entry,
+									   const d_CAN_HOLT_Filter_t *const pFilter, const d_CAN_HOLT_Filter_t *const pMask);
 
 Int32_t main()
 {
 	d_Status_t uart_init_status = d_STATUS_SUCCESS;
 	d_Status_t can_init_status = d_STATUS_SUCCESS;
+	Bool_t tx_cycle = d_TRUE;
 
 	// d_Status_t Msg_received = d_STATUS_NO_DATA;
 
@@ -55,33 +58,39 @@ Int32_t main()
 	uart_init_status = uart_init();
 	can_init_status = can_init();
 
-	if((uart_init_status == d_STATUS_SUCCESS) && (can_init_status == d_STATUS_SUCCESS))
+	if ((uart_init_status == d_STATUS_SUCCESS) && (can_init_status == d_STATUS_SUCCESS))
 	{
-		GLOBAL_SerialPrint_Simple(" Reading Discrete on the SoC of FC-200.\n\r");
+		GLOBAL_SerialPrint_Simple(" CAN TX and RX on FC-200.\n\r");
 
 		/* Debug */
-		while(1)
+		while (1)
 		{
+			if (tx_cycle == d_TRUE)
+			{
+				tx_cycle = d_FALSE;
 
-			d_CAN_SendMessage(0, &tx1Message);
+				d_CAN_SendMessage(0, &tx1Message);
 
-			d_CAN_SendMessage(1, &tx2Message);
+				d_CAN_SendMessage(1, &tx2Message);
 
-			d_CAN_HOLT_SendMessage(0, &tx3Message);
+				d_CAN_HOLT_SendMessage(0, &tx3Message);
 
-			d_CAN_HOLT_SendMessage(1, &tx4Message);
+				d_CAN_HOLT_SendMessage(1, &tx4Message);
 
-			d_CAN_HOLT_SendMessage(2, &tx5Message);
+				d_CAN_HOLT_SendMessage(2, &tx5Message);
+			}
+			else
+			{
+				tx_cycle = d_TRUE;
 
-			d_TIMER_DelayMilliseconds(100);
+				/* Receive CAN message */
+				CAN_ReadMsg();
+				CAN_ReadHoltMsg();
+			}
 
-	        /* Receive CAN message */
-			CAN_ReadMsg();
-			CAN_ReadHoltMsg();
-
+			d_TIMER_DelayMilliseconds(50);
 		}
 	}
-
 }
 
 static d_Status_t uart_init(void)
@@ -95,155 +104,195 @@ static d_Status_t uart_init(void)
 	return retVal;
 }
 
-static d_Status_t                                  /** \return d_STATUS_SUCCESS if the operation was successful */
-can_init
-(
-	void                                      /** NONE */
+static d_Status_t /** \return d_STATUS_SUCCESS if the operation was successful */
+can_init(
+	void /** NONE */
 )
 {
-	  d_Status_t setupValue = d_STATUS_SUCCESS;
+	d_Status_t setupValue = d_STATUS_SUCCESS;
 
-	  // Initialise the PS CAN interfaces.
-	  for(Uint8_t i=0; i<d_CAN_MAX_INTERFACES; i++)
-	  {
-	    setupValue = d_CAN_Initialise(i);
+	// Initialise the PS CAN interfaces.
+	for (Uint8_t i = 0; i < d_CAN_MAX_INTERFACES; i++)
+	{
+		setupValue = d_CAN_Initialise(i);
 
-	    if(setupValue == d_STATUS_SUCCESS)
-	    {
-	      setupValue = d_CAN_ModeSet(i, d_CAN_MODE_NORMAL);
-	    }
-	    if(setupValue == d_STATUS_SUCCESS)
-	    {
-	      CANInitialised[i] = d_TRUE;
-	    }
-	    else
-	    {
-	      CANInitialised[i] = d_FALSE;
-	    }
-	  }  // End FOR each PS CAN interface.
+		if (setupValue == d_STATUS_SUCCESS)
+		{
+			setupValue = d_CAN_ModeSet(i, d_CAN_MODE_NORMAL);
+		}
+		if (setupValue == d_STATUS_SUCCESS)
+		{
+			CANInitialised[i] = d_TRUE;
+			GLOBAL_SerialPrint("  CAN PS IF %d Initialized Successfully\n\r", i, 0.0f);
+		}
+		else
+		{
+			CANInitialised[i] = d_FALSE;
+		}
+	} // End FOR each PS CAN interface.
 
+	/* Program CAN Filtering on a single ID or a range of IDs */
+	d_CAN_ProgramCanIdFilter(0, d_TRUE, &rx1Message, NULL);
 
-	  /* Program CAN Filtering on a single ID or a range of IDs */
-	  d_CAN_ProgramCanIdFilter(0, d_TRUE, &rx1Message, NULL);
+	/* Program CAN Filtering on a single ID or a range of IDs */
+	d_CAN_ProgramCanIdFilter(1, d_TRUE, &rx2Message, NULL);
 
-	  d_CAN_ProgramCanIdFilter(1, d_TRUE, &rx2Message, NULL);
+	// Initialise the HOLT CAN interfaces.
+	for (Uint8_t i = 0; i < MAX_CAN_HOLT_INTERFACE; i++) // d_CAN_HOLT_COUNT should have the correct number based on d_can_holt_cfg, but the build fails when trying to use this constant here.
+	{
+		setupValue = d_CAN_HOLT_Initialise(i);
 
-	  // Initialise the HOLT CAN interfaces.
-	  for(Uint8_t i=0; i<MAX_CAN_HOLT_INTERFACE; i++)   // d_CAN_HOLT_COUNT should have the correct number based on d_can_holt_cfg, but the build fails when trying to use this constant here.
-	  {
-	    setupValue = d_CAN_HOLT_Initialise(i);
+		if (setupValue == d_STATUS_SUCCESS)
+		{
+			setupValue = d_CAN_HOLT_ModeSet(i, d_CAN_HOLT_MODE_INITIALISE);
+		}
+		if (setupValue == d_STATUS_SUCCESS)
+		{
+			setupValue = d_CAN_HOLT_FilterDisable(i);
+		}
+		if (setupValue == d_STATUS_SUCCESS)
+		{
+			setupValue = CAN_Holt_Init_Filter(i, 0, &can_holt_filter_config[i], &mask);
+		}
+		if (setupValue == d_STATUS_SUCCESS)
+		{
+			setupValue = d_CAN_HOLT_FilterEnable(i);
+		}
+		if (setupValue == d_STATUS_SUCCESS)
+		{
+			setupValue = d_CAN_HOLT_ModeSet(i, d_CAN_HOLT_MODE_NORMAL);
+		}
+		if (setupValue == d_STATUS_SUCCESS)
+		{
+			CANHOLTInitialised[i] = d_TRUE;
+			GLOBAL_SerialPrint("  CAN HOLT IF %d Initialized Successfully \n\r", i, 0.0f);
+		}
+		else
+		{
+			CANHOLTInitialised[i] = d_FALSE;
+		}
+	} // End FOR each HOLT CAN interface
 
-	    if(setupValue == d_STATUS_SUCCESS)
-	    {
-	      setupValue = d_CAN_HOLT_FilterDisable(i);
-	    }
-	    if(setupValue == d_STATUS_SUCCESS)
-	    {
-	        setupValue = d_CAN_HOLT_ModeSet(i, d_CAN_HOLT_MODE_NORMAL);
-	    }
-	    if(setupValue == d_STATUS_SUCCESS)
-	    {
-	      CANHOLTInitialised[i] = d_TRUE;
-	    }
-	    else
-	    {
-	      CANHOLTInitialised[i] = d_FALSE;
-	    }
-	  }  // End FOR each HOLT CAN interface
-
-//	  d_CAN_HOLT_FilterSet(0, 0, &filter, &mask1);
-//	  d_CAN_HOLT_FilterEnable(0);
-//
-//	  d_CAN_HOLT_FilterSet(1, 0, &filter, &mask2);
-//	  d_CAN_HOLT_FilterEnable(1);
-//
-//	  d_CAN_HOLT_FilterSet(2, 0, &filter, &mask3);
-//	  d_CAN_HOLT_FilterEnable(2);
-
-
-	return (d_STATUS_SUCCESS);  // This is currently just returning success. On startup each individual interface can pass/fail depending on availability.
+	return (d_STATUS_SUCCESS); // This is currently just returning success. On startup each individual interface can pass/fail depending on availability.
 }
 
-
-static void CAN_ReadMsg ( void )
+static d_Status_t CAN_Holt_Init_Filter(
+	const Uint32_t channel,					  /**< [in] CAN channel number */
+	const Uint32_t entry,					  /**< [in] Filter entry number */
+	const d_CAN_HOLT_Filter_t *const pFilter, /**< [in] Filter definition */
+	const d_CAN_HOLT_Filter_t *const pMask	  /**< [in] Mask definition */
+)
 {
-  // For all the interfaces, not just IF 0
-  for(Uint8_t canIndex=0; canIndex<d_CAN_MAX_INTERFACES; canIndex++)
-  {
-    if(CANInitialised[canIndex] == d_TRUE)
-    {
-      d_CAN_Message_t inMsg;
-      d_Status_t receiveSuccess = d_STATUS_SUCCESS;
-      Uint8_t msgCounter = 0;   // Debug value just used to see multiple messages can be processed in a single cycle.
-      while (receiveSuccess == d_STATUS_SUCCESS)
-      {
-        receiveSuccess = d_CAN_ReceiveMessage(canIndex, &inMsg);
+	d_Status_t retval = d_STATUS_SUCCESS;
+	d_CAN_HOLT_Filter_t get_filter;
+	d_CAN_HOLT_Filter_t get_mask;
 
-        Uint32_t can_rx_id = ((inMsg.id << 18) | (inMsg.exId));
+	retval = d_CAN_HOLT_FilterSet(channel, entry, pFilter, pMask);
 
-        if(receiveSuccess == d_STATUS_SUCCESS)
-        {
-          msgCounter++;
-//          GLOBAL_SerialPrint("   CAN Rx OK: (Msg counter: %d), (IF:%f)\n\r",msgCounter,canIndex);
-          GLOBAL_SerialPrint("  CAN ID = %x\r\n", can_rx_id, 0.0f);
-          for(Uint8_t i=0; i<inMsg.dataLength; i++)
-          {
-           GLOBAL_SerialPrint("   Data: %x Byte: %f\n\r",inMsg.data[i],i);
-          }
-        }
-        else if (receiveSuccess == d_STATUS_NO_DATA)
-        {
-          //Normal end of data after all messages read, OR no data available.
-//          GLOBAL_SerialPrint("   CAN Rx - No more data\n\r",receiveSuccess,0.0f);
-        }
-        else
-        {
-          GLOBAL_SerialPrint("   CAN Rx FAIL %d\n\r",receiveSuccess,0.0f);
-        }
-      }
-    }
-  }
+	if (retval == d_STATUS_SUCCESS)
+	{
+		/* Wait for SPI TX and device to sync with updated register configuration before responding */
+		d_TIMER_DelayMilliseconds(20);
+
+		/* Read back the filter and mask */
+		d_CAN_HOLT_FilterGet(channel, entry, &get_filter, &get_mask);
+
+		/* Compare the read back filter and mask with the original */
+		if ((get_filter.exId == pFilter->exId) &&
+			(get_filter.id == pFilter->id) &&
+			(get_filter.extended == pFilter->extended) &&
+			(get_mask.exId == pMask->exId) &&
+			(get_mask.id == pMask->id))
+		{
+			/* Filter & Mask set correctly */
+			GLOBAL_SerialPrint("   Filter & Mask on channel :%d set correctly\n\r", channel, 0.0f);
+		}
+		else
+		{
+			GLOBAL_SerialPrint("   Filter & Mask on channel :%d set incorrectly\n\r", channel, 0.0f);
+			retval = d_STATUS_FAILURE;
+		}
+	}
+
+	return retval;
 }
 
-static void CAN_ReadHoltMsg ( void )
+static void CAN_ReadMsg(void)
 {
-  // For all the interfaces, not just IF 0
-  for(Uint8_t canIndex=0; canIndex<MAX_CAN_HOLT_INTERFACE; canIndex++)
-  {
-    if(CANHOLTInitialised[canIndex] == d_TRUE)
-    {
-      d_CAN_Message_t inMsg;
-      d_Status_t receiveSuccess = d_STATUS_SUCCESS;
-      Uint8_t msgCounter = 0;   // Debug value just used to see multiple messages can be processed in a single cycle.
-      while (receiveSuccess == d_STATUS_SUCCESS)
-      {
-        receiveSuccess = d_CAN_HOLT_ReceiveMessage(canIndex, &inMsg);
+	// For all the interfaces, not just IF 0
+	for (Uint8_t canIndex = 0; canIndex < d_CAN_MAX_INTERFACES; canIndex++)
+	{
+		if (CANInitialised[canIndex] == d_TRUE)
+		{
+			d_CAN_Message_t inMsg;
+			d_Status_t receiveSuccess = d_STATUS_SUCCESS;
+			Uint8_t msgCounter = 0; // Debug value just used to see multiple messages can be processed in a single cycle.
+			while (receiveSuccess == d_STATUS_SUCCESS)
+			{
+				receiveSuccess = d_CAN_ReceiveMessage(canIndex, &inMsg);
 
-        Uint32_t can_rx_id = ((inMsg.id << 18) | (inMsg.exId));
+				Uint32_t can_rx_id = ((inMsg.id << 18) | (inMsg.exId));
 
-        if(receiveSuccess == d_STATUS_SUCCESS)
-        {
-          msgCounter++;
-//          GLOBAL_SerialPrint("   CAN Rx OK: (Msg counter: %d), (IF:%f)\n\r",msgCounter,canIndex);
-          GLOBAL_SerialPrint("  CAN ID = %x\r\n", can_rx_id, 0.0f);
-          for(Uint8_t i=0; i<inMsg.dataLength; i++)
-          {
-           GLOBAL_SerialPrint("   Data: %x Byte: %f\n\r",inMsg.data[i],i);
-          }
-        }
-        else if (receiveSuccess == d_STATUS_NO_DATA)
-        {
-          //Normal end of data after all messages read, OR no data available.
-//          GLOBAL_SerialPrint("   CAN Rx - No more data\n\r",receiveSuccess,0.0f);
-        }
-        else
-        {
-          GLOBAL_SerialPrint("   CAN Rx FAIL %d\n\r",receiveSuccess,0.0f);
-        }
-      }
-    }
-  }
+				if (receiveSuccess == d_STATUS_SUCCESS)
+				{
+					msgCounter++;
+					//          GLOBAL_SerialPrint("   CAN Rx OK: (Msg counter: %d), (IF:%f)\n\r",msgCounter,canIndex);
+					GLOBAL_SerialPrint("  CAN ID = %x\r\n", can_rx_id, 0.0f);
+					for (Uint8_t i = 0; i < inMsg.dataLength; i++)
+					{
+						GLOBAL_SerialPrint("   Data: %x Byte: %f\n\r", inMsg.data[i], i);
+					}
+				}
+				else if (receiveSuccess == d_STATUS_NO_DATA)
+				{
+					// Normal end of data after all messages read, OR no data available.
+					//          GLOBAL_SerialPrint("   CAN Rx - No more data\n\r",receiveSuccess,0.0f);
+				}
+				else
+				{
+					GLOBAL_SerialPrint("   CAN Rx FAIL %d\n\r", receiveSuccess, 0.0f);
+				}
+			}
+		}
+	}
 }
 
+static void CAN_ReadHoltMsg(void)
+{
+	// For all the interfaces, not just IF 0
+	for (Uint8_t canIndex = 0; canIndex < MAX_CAN_HOLT_INTERFACE; canIndex++)
+	{
+		if (CANHOLTInitialised[canIndex] == d_TRUE)
+		{
+			d_CAN_HOLT_Message_t inMsg;
+			d_Status_t receiveSuccess = d_STATUS_SUCCESS;
+			Uint8_t msgCounter = 0; // Debug value just used to see multiple messages can be processed in a single cycle.
+			while (receiveSuccess == d_STATUS_SUCCESS)
+			{
+				receiveSuccess = d_CAN_HOLT_ReceiveMessage(canIndex, &inMsg);
 
+				Uint32_t can_rx_id = ((inMsg.id << 18) | (inMsg.exId));
 
+				if (receiveSuccess == d_STATUS_SUCCESS)
+				{
+					msgCounter++;
+					//          GLOBAL_SerialPrint("   CAN Rx OK: (Msg counter: %d), (IF:%f)\n\r",msgCounter,canIndex);
+					GLOBAL_SerialPrint("  CAN ID = %x\r\n", can_rx_id, 0.0f);
+					for (Uint8_t i = 0; i < inMsg.dataLength; i++)
+					{
+						GLOBAL_SerialPrint("   Data: %x Byte: %f\n\r", inMsg.data[i], i);
+					}
+				}
+				else if (receiveSuccess == d_STATUS_NO_DATA)
+				{
+					// Normal end of data after all messages read, OR no data available.
+					//          GLOBAL_SerialPrint("   CAN Rx - No more data\n\r",receiveSuccess,0.0f);
+				}
+				else
+				{
+					GLOBAL_SerialPrint("   CAN Rx FAIL %d\n\r", receiveSuccess, 0.0f);
+				}
+			}
+		}
+	}
+}

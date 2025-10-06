@@ -28,9 +28,9 @@ set mode [expr [mrd -value 0xFF5E0200] & 0xf]
 targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
 rst -processor
 dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/136T-2200-113050-001-F11-02/export/136T-2200-113050-001-F11-02/sw/136T-2200-113050-001-F11-02/boot/fsbl.elf
-set bp_54_28_fsbl_bp [bpadd -addr &XFsbl_Exit]
+set bp_17_37_fsbl_bp [bpadd -addr &XFsbl_Exit]
 con -block -timeout 60
-bpremove $bp_54_28_fsbl_bp
+bpremove $bp_17_37_fsbl_bp
 targets -set -nocase -filter {name =~ "*R5*#0" && jtag_cable_name =~ "JTAG Cable 2020.2 AAo1HToQ0" && jtag_device_ctx=="jsn-XSC0-AAo1HToQ0-5ba00477-0"}
 rst -processor
 dow C:/Users/SripadKulkarni/workspace/FC-200-CAN-HOLT/can_holt/Debug/can_holt.elf
